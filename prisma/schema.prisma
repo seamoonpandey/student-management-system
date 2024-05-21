@@ -1,0 +1,67 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "mongodb"
+    url      = env("DATABASE_URL")
+}
+
+model User {
+    id                     String   @id @default(auto()) @map("_id") @db.ObjectId
+    name                   String
+    email                  String   @unique
+    age                    String
+    dob                    DateTime
+    gender                 String
+    primaryContactNumber   String
+    secondaryContactNumber String?
+    password               String
+    image                  String?
+    Admin                  Admin?
+    Student                Student?
+}
+
+model Admin {
+    id     String @id @default(auto()) @map("_id") @db.ObjectId
+    userId String @unique @db.ObjectId
+    user   User   @relation(fields: [userId], references: [id])
+}
+
+model Student {
+    id       String @id @default(auto()) @map("_id") @db.ObjectId
+    userId   String @unique @db.ObjectId
+    user     User   @relation(fields: [userId], references: [id])
+    nickname String
+}
+
+model Book {
+    id          String         @id @default(auto()) @map("_id") @db.ObjectId
+    title       String
+    author      String
+    language    String
+    publishedAt DateTime
+    coverImage  String?
+    pdf         String
+    description String
+    categories  BookCategory[]
+}
+
+model Category {
+    id    String         @id @default(auto()) @map("_id") @db.ObjectId
+    name  String
+    books BookCategory[]
+}
+
+model BookCategory {
+    id         String   @id @default(auto()) @map("_id") @db.ObjectId
+    bookId     String   @db.ObjectId
+    categoryId String   @db.ObjectId
+    book       Book     @relation(fields: [bookId], references: [id])
+    category   Category @relation(fields: [categoryId], references: [id])
+}
