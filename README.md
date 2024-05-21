@@ -19,13 +19,13 @@ This is a backend API application for managing student data using Node.js, Expre
 3. Install the dependencies:
 
    ```bash
-   npm install
+   pnpm install
    ```
 
 4. Start the server:
 
    ```bash
-   npm start
+   pnpm start
    ```
 
 5. The API will be available at `http://localhost:3000`.
