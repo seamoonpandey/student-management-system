@@ -7,12 +7,13 @@ Thank you for considering contributing to our project! We appreciate your time a
 - Use descriptive and meaningful branch names.
 - Prefix your branch names with a relevant category, such as `feature/`, `bugfix/`, or `hotfix/`.
 - Separate words in branch names with hyphens (`-`).
+- Add you name alias like (`sp`) for seamoon pandey.
 
 Examples:
 
-- `feature/user-authentication`
-- `bugfix/database-connection`
-- `hotfix/security-patch`
+- `feature/sp-user-authentication`
+- `bugfix/sp-database-connection`
+- `hotfix/sp-security-patch`
 
 ## Overall Standard Practices
 
